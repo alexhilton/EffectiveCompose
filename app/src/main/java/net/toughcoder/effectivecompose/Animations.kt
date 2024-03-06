@@ -1,19 +1,24 @@
 package net.toughcoder.effectivecompose
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,6 +39,8 @@ fun AnimateVisibility() {
         WithAnimatedVisibility()
 
         WithAlphaAsState()
+
+        LaunchingAnimation()
     }
 }
 
@@ -96,5 +103,33 @@ private fun WithAlphaAsState() {
         ) {
             Text("(Alpha as state) Show/Hide")
         }
+    }
+}
+
+@Composable
+private fun LaunchingAnimation() {
+    val alphaAnimation = remember { Animatable(0f) }
+
+    LaunchedEffect(Unit) {
+        alphaAnimation.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(500)
+        )
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .graphicsLayer { alpha = alphaAnimation.value }
+            .clip(RoundedCornerShape(8.dp))
+            .background(Color.Green)
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = "Animation when launching!",
+            style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
     }
 }
