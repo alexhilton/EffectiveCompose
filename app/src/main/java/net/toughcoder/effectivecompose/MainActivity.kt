@@ -27,13 +27,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column {
-                        Greeting("Android")
-
-                        Spacer(Modifier.height(16.dp))
-
-                        AnimateVisibility()
-                    }
+                    FiveStarScreen()
                 }
             }
         }
