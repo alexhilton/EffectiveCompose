@@ -49,5 +49,9 @@ fun NavGraph(
         composable(route = Destinations.FLAG) {
             FiveStarScreen { navController.popBackStack() }
         }
+
+        composable(route = Destinations.GLES) {
+            GLESScreen { navController.popBackStack() }
+        }
     }
 }
