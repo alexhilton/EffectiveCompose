@@ -7,6 +7,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -33,11 +34,15 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 @Composable
-fun FiveStarScreen(modifier: Modifier = Modifier.fillMaxSize()) {
+fun FiveStarScreen(
+    modifier: Modifier = Modifier.fillMaxSize(),
+    onBack: ()->Unit
+) {
     Box(
         modifier = Modifier
             .background(Color.DarkGray)
-            .padding(top = 60.dp),
+            .padding(top = 60.dp)
+            .clickable { onBack() },
         contentAlignment = Alignment.TopCenter
     ) {
         FiveStarsRedFlag(220.dp)

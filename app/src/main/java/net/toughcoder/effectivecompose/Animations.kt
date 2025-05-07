@@ -5,6 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,9 +32,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AnimateVisibility() {
+fun AnimateVisibility(onBack: ()->Unit) {
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(16.dp)
+            .clickable { onBack() },
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         WithAnimatedVisibility()
