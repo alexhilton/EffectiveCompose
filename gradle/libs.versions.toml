@@ -1,0 +1,48 @@
+[versions]
+agp = "8.8.2"
+kotlin = "2.0.0"
+kotlinSerialization = "1.8.0"
+ktx = "1.16.0"
+lifecycle = "2.8.7"
+activityCompose = "1.10.1"
+store = "1.1.6"
+nav = "2.8.9"
+junit = "4.13.2"
+test = "1.2.1"
+androidxComposeBom = "2025.04.01"
+
+
+[libraries]
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+androidx-activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-store = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "store" }
+
+lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime", version.ref = "lifecycle" }
+lifecycle-common = { group = "androidx.lifecycle", name = "lifecycle-common", version.ref = "lifecycle" }
+lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "nav" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test = { group = "androidx.test.ext", name = "junit", version.ref = "test" }
+androidx-testEspresso = { group = "androidx.test.espresso", name = "espresso-core", version = "espresso"}
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-uiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-uiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-uiPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-uiJunit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-uiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerialization" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

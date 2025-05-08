@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -49,28 +49,39 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.activity:activity-compose:1.10.1")
+    // Kotlin
+    implementation(libs.kotlinx.serialization)
+
+    implementation(libs.androidx.ktx)
+
+    // Jetpack
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.lifecycle.common)
+    implementation(libs.lifecycle.runtimeCompose)
+    implementation(libs.lifecycle.viewmodel)
+
+    implementation(libs.androidx.activityCompose)
+    implementation(libs.androidx.store)
+    implementation(libs.navigation.runtime)
+    implementation(libs.navigation.compose)
 
     // Compose
-    implementation(platform("androidx.compose:compose-bom:2025.04.01"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.navigation:navigation-runtime-android:2.9.0-rc01")
-    implementation("androidx.navigation:navigation-compose:2.8.9")
-    implementation("androidx.navigation:navigation-runtime-ktx:2.8.9")
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.uiGraphics)
+    implementation(libs.androidx.compose.uiPreview)
+    implementation(libs.androidx.compose.material3)
 
     // Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2025.04.01"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test)
+    androidTestImplementation(libs.androidx.testEspresso)
+    androidTestImplementation(composeBom)
+    androidTestImplementation(libs.androidx.compose.uiJunit)
 
     // Debug
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    debugImplementation(libs.androidx.compose.uiTooling)
+    debugImplementation(libs.androidx.compose.uiTestManifest)
 }
