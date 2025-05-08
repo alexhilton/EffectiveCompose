@@ -11,27 +11,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kotlinx.serialization.Serializable
+
+@Serializable
+object Home
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier.fillMaxSize(),
-    goto: (String)->Unit
+    goto: (Any)->Unit
 ) {
     Column(
         modifier = modifier.padding(vertical = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Button(onClick = { goto(Destinations.ANIM) }) {
-            BigText("Animations")
+        Button(onClick = { goto(Animations) }) {
+            BigText(KEY_ANIM)
         }
 
-        Button(onClick = { goto(Destinations.FLAG) }) {
-            BigText("Waving flag")
+        Button(onClick = { goto(WavingFlag) }) {
+            BigText(KEY_FLAG)
         }
 
-        Button(onClick = { goto(Destinations.GLES) }) {
-            BigText("OpenGL ES")
+        Button(onClick = { goto(OpenGLES) }) {
+            BigText(KEY_GLES)
         }
     }
 }

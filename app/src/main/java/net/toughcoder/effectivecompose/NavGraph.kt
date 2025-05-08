@@ -8,25 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
 
-object Destinations {
-    const val HOME = "home"
-    const val ANIM = "animations"
-    const val FLAG = "wavingflag"
-    const val GLES = "oepngles"
-}
-
-@Serializable
-object Home
-
-@Serializable
-object WavingFlag
-
-@Serializable
-object Animations
-
-@Serializable
-object OpenGLES
-
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,
@@ -40,13 +21,7 @@ fun NavGraph(
     ) {
         composable<Home> {
             HomeScreen { where ->
-                val route = when (where) {
-                    Destinations.ANIM -> Animations
-                    Destinations.FLAG -> WavingFlag
-                    Destinations.GLES -> OpenGLES
-                    else -> Home
-                }
-                navController.navigate(route = route)
+                navController.navigate(route = where)
             }
         }
 

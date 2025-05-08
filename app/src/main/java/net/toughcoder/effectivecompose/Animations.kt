@@ -30,6 +30,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import kotlinx.serialization.Serializable
+
+const val KEY_ANIM = "Animation demos"
+
+@Serializable
+object Animations
 
 @Composable
 fun AnimateVisibility(onBack: ()->Unit) {

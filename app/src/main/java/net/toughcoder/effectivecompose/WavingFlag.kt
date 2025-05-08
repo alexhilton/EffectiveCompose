@@ -28,10 +28,16 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlinx.serialization.Serializable
 import kotlin.math.PI
 import kotlin.math.atan
 import kotlin.math.cos
 import kotlin.math.sin
+
+const val KEY_FLAG = "Waving flag"
+
+@Serializable
+object WavingFlag
 
 @Composable
 fun FiveStarScreen(
