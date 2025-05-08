@@ -6,51 +6,61 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import kotlinx.serialization.Serializable
 
 object Destinations {
-    const val APP_URI = "http://toughcoder.net/effectivecompose"
-    const val HOME = "home";
-    const val FLAG = "waving_flag"
+    const val HOME = "home"
     const val ANIM = "animations"
-    const val GLES = "opengles"
+    const val FLAG = "wavingflag"
+    const val GLES = "oepngles"
 }
 
+@Serializable
+object Home
+
+@Serializable
 object WavingFlag
 
+@Serializable
 object Animations
 
+@Serializable
 object OpenGLES
 
 @Composable
 fun NavGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    start: String = Destinations.HOME
+    start: Home = Home
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = start
     ) {
-        composable(
-            route = Destinations.HOME
-        ) {
+        composable<Home> {
             HomeScreen { where ->
-                navController.navigate(where)
+                val route = when (where) {
+                    Destinations.ANIM -> Animations
+                    Destinations.FLAG -> WavingFlag
+                    Destinations.GLES -> OpenGLES
+                    else -> Home
+                }
+                navController.navigate(route = route)
             }
         }
 
-        composable(route = Destinations.ANIM) {
+        composable<Animations> {
             AnimateVisibility {
                 navController.popBackStack()
             }
         }
 
-        composable(route = Destinations.FLAG) {
+        composable<WavingFlag> {
             FiveStarScreen { navController.popBackStack() }
         }
 
-        composable(route = Destinations.GLES) {
+        composable<OpenGLES> {
             GLESScreen { navController.popBackStack() }
         }
     }
