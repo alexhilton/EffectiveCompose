@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import net.toughcoder.effectivecompose.shader.FirstShaderScreen
+import net.toughcoder.effectivecompose.shader.FirstShader
 
 @Composable
 fun NavGraph(
@@ -36,6 +38,10 @@ fun NavGraph(
 
         composable<OpenGLES> {
             GLESScreen { navController.popBackStack() }
+        }
+
+        composable<FirstShader> {
+            FirstShaderScreen { navController.popBackStack() }
         }
     }
 }

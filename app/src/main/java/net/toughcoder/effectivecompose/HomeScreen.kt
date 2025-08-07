@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.Serializable
+import net.toughcoder.effectivecompose.shader.KEY_SHADERS
+import net.toughcoder.effectivecompose.shader.FirstShader
 
 @Serializable
 object Home
@@ -36,6 +38,10 @@ fun HomeScreen(
 
         Button(onClick = { goto(OpenGLES) }) {
             BigText(KEY_GLES)
+        }
+
+        Button(onClick = { goto(FirstShader) }) {
+            BigText(KEY_SHADERS)
         }
     }
 }
